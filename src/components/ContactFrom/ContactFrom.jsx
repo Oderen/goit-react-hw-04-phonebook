@@ -80,7 +80,7 @@ const ContactForm = ({ sendDataToApp, contacts }) => {
           type="text"
           name="name"
           value={name}
-          pattern="^[a-zA-Zа-яА-Я]+$"
+          pattern="^[a-zA-Z\s]+$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           onChange={handleChange}
           required
@@ -92,7 +92,7 @@ const ContactForm = ({ sendDataToApp, contacts }) => {
           type="tel"
           name="number"
           value={number}
-          pattern="^[0-9]+$"
+          pattern="^[+]?[0-9\s]+$"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           onChange={handleChange}
           required
