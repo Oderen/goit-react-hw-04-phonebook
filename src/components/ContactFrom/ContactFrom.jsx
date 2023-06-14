@@ -59,11 +59,11 @@ const ContactForm = ({ sendDataToApp, contacts }) => {
     reset();
   };
 
-  const onDuplicateCheck = identificator => {
-    const normalizedIdentificator = identificator.toLowerCase();
+  const onDuplicateCheck = name => {
+    const newContactName = name.toLowerCase();
 
-    return contacts.some(contact =>
-      contact.name.toLowerCase().includes(normalizedIdentificator)
+    return contacts.some(
+      contact => contact.name.toLowerCase() === newContactName
     );
   };
 
@@ -80,7 +80,7 @@ const ContactForm = ({ sendDataToApp, contacts }) => {
           type="text"
           name="name"
           value={name}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          pattern="^[a-zA-Zа-яА-Я]+$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           onChange={handleChange}
           required
@@ -92,7 +92,7 @@ const ContactForm = ({ sendDataToApp, contacts }) => {
           type="tel"
           name="number"
           value={number}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          pattern="^[0-9]+$"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           onChange={handleChange}
           required
@@ -102,6 +102,8 @@ const ContactForm = ({ sendDataToApp, contacts }) => {
     </form>
   );
 };
+
+// /\+7 ([0-9]{3}) [0-9]{3}-[0-9]{2}-[0-9]{2}/;
 
 export default ContactForm;
 
